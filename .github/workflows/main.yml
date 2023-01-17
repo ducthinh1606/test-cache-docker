@@ -30,13 +30,3 @@ jobs:
           tags: ducthinh1606/test-cache-docker:latest
           file: ./Dockerfile
           context: ./
-
-
-      - name: Image digest
-        run: echo ${{ steps.docker_build.outputs.digest }}
-
-      - name: Run docker-compose
-        run: docker-compose up -d --no-build
-
-      - name: Access backend container
-        run: docker-compose exec -T backend sh
