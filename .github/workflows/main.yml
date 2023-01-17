@@ -24,7 +24,8 @@ jobs:
         uses: docker/build-push-action@v2
         id: docker_build
         with:
-          push: true
+          push: false
+          load: true
           builder: ${{ steps.buildx.outputs.name }}
           tags: ducthinh1606/test-cache-docker:latest
           file: ./Dockerfile
