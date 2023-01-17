@@ -16,7 +16,7 @@ jobs:
       - name: Cache Docker-compose
         uses: actions/cache@v2
         with:
-          path: /tmp/backend/.buildx-cache
+          path: /tmp/.buildx-cache
           key: ${{ runner.os }}-buildx-${{ github.sha }}
           restore-keys: ${{ runner.os }}-buildx-
 
@@ -28,7 +28,7 @@ jobs:
           load: true
           builder: ${{ steps.buildx.outputs.name }}
           tags: ducthinh1606/test-cache-docker:latest
-          file: ./Dockerfile
-          context: ./backend
-          cache-from: type=local,src=/tmp/backend/.buildx-cache
-          cache-to: type=local,dest=/tmp/backend/.buildx-cache
+          file: Dockerfile
+          context: backend
+          cache-from: type=local,src=/tmp/.buildx-cache
+          cache-to: type=local,dest=/tmp/.buildx-cache
