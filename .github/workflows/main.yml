@@ -28,7 +28,7 @@ jobs:
           load: true
           builder: ${{ steps.buildx.outputs.name }}
           tags: ducthinh1606/test-cache-docker:latest
-          file: Dockerfile
-          context: backend
+          file: ./backend/Dockerfile
+#          context: backend
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
