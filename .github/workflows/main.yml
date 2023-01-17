@@ -8,7 +8,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-
       - name: Setup Docker Buildx
         uses: docker/setup-buildx-action@v1
         id: buildx
@@ -29,6 +28,8 @@ jobs:
           builder: ${{ steps.buildx.outputs.name }}
           tags: ducthinh1606/test-cache-docker:latest
           file: ./backend/Dockerfile
-#          context: backend
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
+          
+      - name: Run docker-compose
+        run: docker-compose up --no-build
